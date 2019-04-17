@@ -1,0 +1,11 @@
+extends layouts/main
+
+block content
+    .form-container
+        form(action=routes.login, method="post")
+            input(type="email", name="email", placeholder="Email", required=true)
+            input(type="password", name="password", placeholder="Password", required=true)
+            input(type="submit",value="Log In")
+        include partials/socialLogin
+        // partials폴더의 socialLogin의 파일에서 git로그인버튼이랑 facebook 로그인 버튼을 가져옴
+        //CSS 방법론 중 BEM이라는 방법론을 사용

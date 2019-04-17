@@ -1,0 +1,33 @@
+header.header
+    .header__column 
+        a(href=routes.home) 
+            i.fab.fa-youtube
+    .header__column
+        form(action=routes.search, method="get")
+            input(type="text", placeholder="Search by term...", name="term")
+    //
+     pug주석 href = routes.join은 middleware.js에서 받아옴
+     href=routes.home은 아이콘을 클릭시 home.pug로 가게 한다.
+    
+    //
+        search.pug로 보내주고 searchingBy의 값을 가져 오기 위해 컨트롤러를 수정하였다.
+    
+    .header__column
+        ul
+            if user.isAuthenticated
+                li
+                    a(href=routes.join) Join 
+                      
+                li
+                    a(href=routes.login) Log In
+            else 
+                li
+                    a(href=`/videos${routes.upload}`) Upload
+
+                    //그냥a(href = `/videos${routes.uplad}`)라고 하면 오류가 뜸 이렇게 써줘야 오류 안뜸ㅋㅋ 
+                li
+                    a(href=routes.userDetail(user.id)) Profile
+                    //template에서도 인자 없이 실행하면 안됨 그래서 user.id를 인자로 입력해야함~
+                li
+                    a(href=routes.logout) Log Out
+        //user.isAutenticated가 (!인경우) else에서 다른 링크를 보여준다.

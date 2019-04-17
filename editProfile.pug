@@ -1,0 +1,14 @@
+extends layouts/main
+
+block content
+    .form-container
+        form(action=`/users${routes.editProfile}`, method="post")
+            label(for="avatar") Avatar
+            //label은 폼 양식에 이름을 붙이는 태그 주요속성은 for이며, label의 for값과 양식의 id값이 같으면 연결된다.
+            //수정했을때 생겼던 오류 /users/edit-profile에 접속을 하면 /users/:id로 접속한 걸로 라우터가 이해함 /users/edit-profile이 아니라 그래서 userRouter들의 순서들을 바꾸어 주었다.
+            input(type="file", id="avatar", name="avatar")
+            input(type="text", placeholder="Name", name="name")
+            input(type="email", placeholder="Email", name="email")
+            input(type="submit", value="Update Profile")
+        a.form-container__link(href=`/users${routes.changePassword}`) Change Password
+        //이 링크는 routes.changePassword로 이동하는 링크이다.

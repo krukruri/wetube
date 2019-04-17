@@ -1,0 +1,13 @@
+extends layouts/main
+
+block content
+    .form-container
+         form(action=`/videos${routes.upload}`, method="post", enctype="multipart/form-data")
+        
+            label(for="file") Video File
+            input(type="file", id="file", name="videoFile", required=true,accept="video/*")
+            input(type="text", placeholder="Title", name="title", required=true)
+            textarea(name="description", placeholder="Description", required=true)
+            input(type="submit", value="Upload Video")
+            //파일을 보낼꺼라서 form의 encoding이 달라져야한다.enctype="multipart/form-data"
+            //multer이라는 것을 설치했다. ->file url을 반환해준다.
